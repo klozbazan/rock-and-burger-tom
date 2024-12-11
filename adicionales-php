@@ -1,0 +1,55 @@
+<?php
+/*
+Plugin Name: Adicionales en WooCommerce
+Plugin URI: https://gpmarketingdigitalperu.com/adiconales-woocommerce
+Description: Agrega productos adicionales en la página de producto de WooCommerce.
+Version: 1.0
+Author: Carlos Bazán
+Author URI: https://gpmarketingdigitalperu.com
+*/
+
+// Añadir productos adicionales en un acordeón
+add_action('woocommerce_single_product_summary', 'mostrar_adicionales_accordion', 25);
+
+function mostrar_adicionales_accordion() {
+    echo '<div id="additional-products-accordion">';
+
+    // Sección de Adicionales
+    echo '<h3>Adicionales</h3>';
+    echo '<div class="panel additional-options">';
+    echo '<p>Huevo - S/2.00 <input class="small-input" type="number" id="huevo" name="huevo" min="0" value="0" data-price="2.00" data-product-id="25"></p>';
+    echo '<p>Jamón Pizza x Lonja - S/1.5 <input class="small-input" type="number" id="jamon" name="jamon" min="0" value="0" data-price="1.50" data-product-id="26"></p>';
+    echo '<p>Queso - S/2.00 <input class="small-input" type="number" id="queso" name="queso" min="0" value="0" data-price="2.00" data-product-id="28"></p>';
+    echo '<p>Tocino - S/2.00 <input class="small-input" type="number" id="tocino" name="tocino" min="0" value="0" data-price="2.00" data-product-id="29"></p>';
+    echo '<p>Chorizo - S/6.00 <input class="small-input" type="number" id="chorizo" name="chorizo" min="0" value="0" data-price="6.00" data-product-id="23"></p>';
+    echo '<p>Carne Artesanal - S/6.00 <input class="small-input" type="number" id="carne" name="carne" min="0" value="0" data-price="6.00" data-product-id="22"></p>';
+    echo '<p>Hot Dog x Unidad - S/2.5 <input class="small-input" type="number" id="hotdog" name="hotdog" min="0" value="0" data-price="2.50" data-product-id="24"></p>';
+    echo '<p>Piña en Rodajas - S/2 <input class="small-input" type="number" id="pina" name="pina" min="0" value="0" data-price="2.00" data-product-id="27"></p>';
+    echo '<p>Tequeños (10 unidades) - S/13 <input class="small-input" type="number" id="tequenos" name="tequenos" min="0" value="0" data-price="13.00" data-product-id="21"></p>';
+    echo '</div>';
+
+    // Sección de Papas Fritas
+    echo '<h3>Papas Fritas</h3>';
+    echo '<div class="panel fries-options">';
+    echo '<p>Cajita de papas fritas - S/5 <input class="small-input" type="number" id="cajita" name="cajita" min="0" value="0" data-price="5.00" data-product-id="117"></p>';
+    echo '<p>Porción de Papas Fritas Regular - S/12 <input class="small-input" type="number" id="porcion" name="porcion" min="0" value="0" data-price="12.00" data-product-id="116"></p>';
+    echo '</div>';
+
+    // Sección de Bebidas
+    echo '<h3>Bebidas</h3>';
+    echo '<div class="panel drink-options">';
+    echo '<p>Coca Cola de 500Ml - S/4.5 <input class="small-input" type="number" id="coca" name="coca" min="0" value="0" data-price="4.50" data-product-id="30"></p>';
+    echo '<p>Inka Cola de 500Ml - S/4.5 <input class="small-input" type="number" id="inka" name="inka" min="0" value="0" data-price="4.50" data-product-id="32"></p>';
+    echo '<p>Fanta de 500Ml - S/4.5 <input class="small-input" type="number" id="fanta" name="fanta" min="0" value="0" data-price="4.50" data-product-id="31"></p>';
+    echo '<p>Sprite de 500Ml - S/4.5 <input class="small-input" type="number" id="sprite" name="sprite" min="0" value="0" data-price="4.50" data-product-id="33"></p>';
+    echo '</div>';
+
+    echo '</div>';
+
+    // Input numérico y botón de "Ir a Pagar"
+    echo '<div style="display: flex; align-items: center; margin-top: 10px;">';
+    echo '<input type="number" id="product-quantity" name="quantity" value="1" min="1" style="margin-right: 10px; width: 60px;" />';
+    echo '<a href="' . wc_get_checkout_url() . '" class="go-to-checkout button alt">Ir a Pagar S/ <span id="button-total">0.00</span></a>';
+    echo '</div>';
+    echo '<input type="hidden" id="product_id" value="61">';
+}
